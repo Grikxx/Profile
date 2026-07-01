@@ -38,7 +38,7 @@ const navigationData: NavigationSection[] = [
   },
 ];
 
-const CollaborateButton = ({ className }: { className?: string }) => (
+const ContactsButton = ({ className }: { className?: string }) => (
   <Button className={cn("relative text-sm font-medium rounded-full h-10 p-1 ps-4 pe-12 group transition-all duration-500 hover:ps-12 hover:pe-4 w-fit overflow-hidden hover:bg-primary/80", className)}>
     <span className="relative z-10 transition-all duration-500 hover:cursor-pointer">
       Contacts
@@ -76,36 +76,16 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto w-full px-4 py-4 sm:px-6">
           <nav
             className={cn(
-              "w-full flex items-center h-fit justify-between gap-3.5 lg:gap-6 transition-all duration-500",
+              "w-full flex items-center h-fit justify-between gap-3.5 md:gap-6 transition-all duration-500",
               sticky
-                ? "p-2.5 bg-background/60 backdrop-blur-lg border border-border/40 shadow-2xl shadow-primary/5 rounded-full"
-                : "bg-transparent border-transparent"
+                ? "p-2.5 bg-background/60 backdrop-blur-md border border-border/40 shadow-2xl shadow-primary/5 rounded-full"
+                : "bg-transparent border-transparent",
             )}
           >
-            <a href="#">
-              <h1 />
-            </a>
-            <div>
-              <NavigationMenu className="max-lg:hidden bg-muted p-0.5 rounded-full">
-                <NavigationMenuList className="flex gap-0">
-                  {navigationData.map((navItem) => (
-                    <NavigationMenuItem key={navItem.title}>
-                      <NavigationMenuLink
-                        href={navItem.href}
-                        className="px-2 lg:px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-foreground hover:bg-background outline outline-transparent hover:outline-border hover:shadow-xs transition tracking-normal"
-                      >
-                        {navItem.title}
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </div>
-            <CollaborateButton className="hidden lg:flex" />
-
-            <div className="lg:hidden">
+            <div className="flex justify-start h-fit items-center gap-4">
+            <div className="md:hidden">
               <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-                <DropdownMenuTrigger className="rounded-full bg-background border border-border p-2 outline-none flex items-center justify-center cursor-pointer transition-colors">
+                <DropdownMenuTrigger className="rounded-full bg-background border border-border p-2 outline-none flex items-center justify-start cursor-pointer transition-colors">
                   <TextAlignJustify size={20} />
                   <span className="sr-only">Menu</span>
                 </DropdownMenuTrigger>
@@ -122,6 +102,31 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
+            
+            <a href="#">
+              <h1 >Grikxx</h1>
+            </a>
+              
+            </div>
+            <div>
+              <NavigationMenu className="max-md:hidden bg-muted p-0.5 rounded-full">
+                <NavigationMenuList className="flex gap-0">
+                  {navigationData.map((navItem) => (
+                    <NavigationMenuItem key={navItem.title}>
+                      <NavigationMenuLink
+                        href={navItem.href}
+                        className="px-2 md:px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-foreground hover:bg-background outline outline-transparent hover:outline-border hover:shadow-xs transition tracking-normal"
+                      >
+                        {navItem.title}
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
+            <ContactsButton className=" md:flex" />
+
+            
           </nav>
         </div>
       </header>
