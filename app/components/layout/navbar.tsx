@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight, TextAlignJustify } from "lucide-react";
+import { SmartAcFreeIcons } from "@hugeicons/core-free-icons";
+import { ArrowUpRight, TextAlignJustify, TextQuote } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
 export type NavigationSection = {
@@ -38,20 +39,10 @@ const navigationData: NavigationSection[] = [
   },
 ];
 
-const ContactsButton = ({ className }: { className?: string }) => (
-  <Button className={cn("relative text-sm font-medium rounded-full h-10 p-1 ps-4 pe-12 group transition-all duration-500 hover:ps-12 hover:pe-4 w-fit overflow-hidden hover:bg-primary/80", className)}>
-    <span className="relative z-10 transition-all duration-500 hover:cursor-pointer">
-      Contacts
-    </span>
-    <div className="absolute right-1 w-8 h-8 bg-background text-foreground rounded-full flex items-center justify-center transition-all duration-500 group-hover:right-[calc(100%-36px)] group-hover:rotate-45">
-      <ArrowUpRight size={16} />
-    </div>
-  </Button>
-);
-
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const handleScroll = useCallback(() => {
     setSticky(window.scrollY >= 50);
   }, []);
@@ -70,9 +61,60 @@ const Navbar = () => {
     };
   }, [handleScroll, handleResize]);
 
+const MenusButton = ({ className }: { className?: string }) => (
+  <DropdownMenu open={clicked} onOpenChange={setClicked}>
+  <DropdownMenuTrigger asChild>
+  <Button className={cn('relative text-sm font-medium rounded-full h-10 p-1 ps-4 pe-12 group bg-primary  transition-all duration-500  ',clicked?"ps-12 pe-4 w-fit overflow-hidden  bg-primary/80":"transition-all duration-500 hover:ps-12 hover:pe-4 w-fit overflow-hidden hover:bg-primary/80", className)} >
+    <div className={cn('absolute right-1 w-8 h-8 bg-background text-foreground rounded-full flex items-center justify-center transition-all duration-500  ',clicked?" right-[calc(100%-36px)] rotate-90":" transition-all duration-500 group-hover:right-[calc(100%-36px)] group-hover:rotate-90")}>
+        <ArrowUpRight size={20} />
+    </div>
+    <span className={cn('relative  z-10   transition-all duration-500  ')}>
+      Menus
+    </span>
+    
+  </Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent
+                  align="end"
+                  className="w-56 mt-2"
+                >
+                  {navigationData.map((item) => (
+                    <DropdownMenuItem key={item.title}>
+                      <a href={item.href} className="w-full cursor-pointer text-sm font-medium">{item.title}</a>
+                    </DropdownMenuItem>
+                  ))}
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
+
+const ProfileButton = ({ className }: { className?: string }) => (
+  <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+  <DropdownMenuTrigger asChild>
+  <Button className={cn("relative text-sm font-medium rounded-full h-10 p-1 ps-4 pe-12 group bg-primary ",isOpen?"ps-12 pe-4 w-fit overflow-hidden transition-all duration-500 bg-primary/80":"transition-all duration-500 hover:ps-12 hover:pe-4 w-fit overflow-hidden hover:bg-primary/80", className)} >
+    <div className={cn("absolute left-1 w-8 h-8 bg-background text-foreground rounded-full flex items-center justify-center ",isOpen?"transition-all duration-500 left-[calc(100%-36px)] rotate-90":" transition-all duration-500 group-hover:left-[calc(100%-36px)] group-hover:rotate-90")}>
+        <TextAlignJustify size={20} />
+    </div>
+    <span className={cn("relative left-8 z-10  ",isOpen?"transition-all  duration-500 left-[calc(100%-72px)] ":"transition-all  duration-500 group-hover:left-[calc(100%-72px)] ")}>
+      Grikxx 
+    </span>
+    
+  </Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent
+                  align="end"
+                  className="w-56 mt-2"
+                >
+                  {navigationData.map((item) => (
+                    <DropdownMenuItem key={item.title}>
+                      <a href={item.href} className="w-full cursor-pointer text-sm font-medium">{item.title}</a>
+                    </DropdownMenuItem>
+                  ))}
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
   return (
     <div>
-      <header className="bg-background">
+      <header className="bg-background ">
         <div className="max-w-7xl mx-auto w-full px-4 py-4 sm:px-6">
           <nav
             className={cn(
@@ -84,26 +126,10 @@ const Navbar = () => {
           >
             <div className="flex justify-start h-fit items-center gap-4">
             <div className="md:hidden">
-              <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-                <DropdownMenuTrigger className="rounded-full bg-background border border-border p-2 outline-none flex items-center justify-start cursor-pointer transition-colors">
-                  <TextAlignJustify size={20} />
-                  <span className="sr-only">Menu</span>
-                </DropdownMenuTrigger>
-
-                <DropdownMenuContent
-                  align="end"
-                  className="w-56 mt-2"
-                >
-                  {navigationData.map((item) => (
-                    <DropdownMenuItem key={item.title}>
-                      <a href={item.href} className="w-full cursor-pointer text-sm font-medium">{item.title}</a>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+                <ProfileButton />
             </div>
             
-            <a href="#">
+            <a href="#" className="hidden md:block">
               <h1 >Grikxx</h1>
             </a>
               
@@ -124,7 +150,7 @@ const Navbar = () => {
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
-            <ContactsButton className=" md:flex" />
+            <MenusButton className=" md:flex" />
 
             
           </nav>
