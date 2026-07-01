@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
-import { SmartAcFreeIcons } from "@hugeicons/core-free-icons";
-import { ArrowUpRight, TextAlignJustify, TextQuote } from "lucide-react";
+import { ArrowUpRight, TextAlignJustify } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export type NavigationSection = {
   title: string;
@@ -15,27 +15,27 @@ export type NavigationSection = {
 const navigationData: NavigationSection[] = [
   {
     title: "Home",
-    href: "#",
+    href: "/",
   },
   {
     title: "Experience",
-    href: "#",
+    href: "/experience",
   },
   {
     title: "Projects",
-    href: "#",
+    href: "/projects",
   },
   {
     title: "TechStack",
-    href: "#",
+    href: "/techstack",
   },
   {
     title: "About me",
-    href: "#",
+    href: "/aboutme",
   },
   {
     title: "Blog",
-    href: "#",
+    href: "/blog",
   },
 ];
 
@@ -112,6 +112,7 @@ const ProfileButton = ({ className }: { className?: string }) => (
     </DropdownMenuContent>
   </DropdownMenu>
 );
+  const pathname = usePathname();
   return (
     <div>
       <header className="bg-background ">
@@ -137,22 +138,26 @@ const ProfileButton = ({ className }: { className?: string }) => (
             <div>
               <NavigationMenu className="max-md:hidden bg-muted p-0.5 rounded-full">
                 <NavigationMenuList className="flex gap-0">
-                  {navigationData.map((navItem) => (
-                    <NavigationMenuItem key={navItem.title}>
-                      <NavigationMenuLink
-                        href={navItem.href}
-                        className="px-2 md:px-4 py-2 text-sm font-medium rounded-full text-muted-foreground hover:text-foreground hover:bg-background outline outline-transparent hover:outline-border hover:shadow-xs transition tracking-normal"
-                      >
-                        {navItem.title}
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}
+                    {navigationData.map((navItem) => {
+                      const isActive = pathname === navItem.href;
+                        return (
+                          <NavigationMenuItem key={navItem.title}>
+                            <NavigationMenuLink
+                              href={navItem.href}
+                              className={`px-2 md:px-4 py-2 text-sm font-medium rounded-full transition tracking-normal outline ${
+                                isActive
+                                  ? "text-foreground bg-background outline-border shadow-xs" 
+                                  : "text-muted-foreground hover:text-foreground hover:bg-background outline-transparent hover:outline-border hover:shadow-xs" 
+                              }`}
+                            >
+                              {navItem.title}
+                            </NavigationMenuLink>
+                          </NavigationMenuItem>
+                        );})}
                 </NavigationMenuList>
               </NavigationMenu>
             </div>
-            <MenusButton className=" md:flex" />
-
-            
+            <MenusButton className=" md:flex" /> 
           </nav>
         </div>
       </header>
