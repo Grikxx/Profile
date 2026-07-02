@@ -86,7 +86,7 @@
 .dark {
   --background: oklch(0% 0 0);      /* Deep abyss violet-black */
   --foreground: oklch(82.335% 0.05941 278.626);
-  --card: oklch(89.935% 0.04784 285.377);            /* Deep neon-infused card background */
+  --card: oklch(0% 0 0);            /* Deep neon-infused card background */
   --card-foreground: oklch(64.341% 0.00007 271.152);
   --popover: oklch(0.10 0.02 280);
   --popover-foreground: oklch(0.95 0.01 280);

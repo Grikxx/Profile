@@ -2,15 +2,15 @@
 
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; 
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   Home,
   LineChart,
-  CreditCard,
-  MessageCircle,
-  Trophy,
+  FolderOpenDot,
   User,
+  Handshake,
+  BookCheck,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -18,10 +18,10 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { label: "Home", icon: Home, href: "/" },
   { label: "Experience", icon: LineChart, href: "/experience" },
-  { label: "Projects", icon: CreditCard, href: "/projects" },
-  { label: "About Me", icon: MessageCircle, href: "/aboutme" },
-  { label: "Blog", icon: Trophy, href: "/blog" },
-  { label: "Contacts", icon: User, href: "/contacts" },
+  { label: "Projects", icon: FolderOpenDot, href: "/projects" },
+  { label: "About Me", icon: User, href: "/aboutme" },
+  { label: "Blog", icon: BookCheck, href: "/blog" },
+  { label: "Contacts", icon: Handshake, href: "/contacts" },
 ];
 
 const MOBILE_LABEL_WIDTH = 72;
@@ -36,7 +36,7 @@ export function BottomNavBar({
   stickyBottom = true,
 }: BottomNavBarProps) {
   const pathname = usePathname();
-  
+
   const [show, setShow] = useState(true);
 
   const handleResize = useCallback(() => {
@@ -67,7 +67,7 @@ export function BottomNavBar({
         {navItems.map((item) => {
           const Icon = item.icon;
           const href = item.href;
-          
+
           const isActive = pathname === href;
 
           return (
@@ -82,7 +82,7 @@ export function BottomNavBar({
                 className={cn(
                   "flex items-center gap-0 px-3 py-2 rounded-full transition-colors duration-200 relative h-10 min-w-[44px] min-h-[40px] max-h-[48px]",
                   isActive
-                    ? "bg-primary/10 dark:bg-primary/15 text-primary dark:text-primary gap-2"
+                    ? "bg-primary/10 dark:bg-primary/25 text-primary dark:text-primary gap-2"
                     : "bg-transparent text-muted-foreground dark:text-muted-foreground hover:bg-muted dark:hover:bg-muted",
                   "focus:outline-none focus-visible:ring-0",
                 )}
@@ -106,7 +106,9 @@ export function BottomNavBar({
                     opacity: { duration: 0.19 },
                     marginLeft: { duration: 0.19 },
                   }}
-                  className={cn("overflow-hidden flex items-center max-w-[72px]")}
+                  className={cn(
+                    "overflow-hidden flex items-center max-w-[72px]",
+                  )}
                 >
                   <span
                     className={cn(

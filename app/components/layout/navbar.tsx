@@ -182,7 +182,7 @@ const Navbar = () => {
                 width="66.000000pt" height="45.000000pt" viewBox="0 0 600.000000 326.000000"
                 preserveAspectRatio="xMidYMid meet">
                 <g transform="translate(0.000000,326.000000) scale(0.066667,-0.066667)"
-                 stroke="none" className="fill-primary ">
+                 stroke="none" className="fill-primary">
                 <path d="M2019 4138 c-993 -201 -1582 -2303 -763 -2718 280 -142 673 -37 862
                 231 105 149 107 132 17 -195 -123 -452 -259 -595 -588 -616 -204 -13 -256 -78
                 -156 -196 167 -199 579 -143 806 108 166 185 225 369 338 1047 26 152 64 358
