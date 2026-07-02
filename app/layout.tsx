@@ -35,6 +35,7 @@ export default function RootLayout({
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
+            themes={["light", "dark", "red", "darkred", "brown", "darkbrown"]}
           >
         <Navbar />
         {children}

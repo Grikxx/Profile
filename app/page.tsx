@@ -233,7 +233,7 @@ export default function Home() {
           {facts.map((fact, index) => (
             <div
               key={index}
-              className="bg-primary/10 mx-3 md:mx-4 xl:mx-8 lg:mx-4 rounded-3xl py-4 px-4 md:py-6 md:px-6 shadow-xl shadow-primary/50 mt-4"
+              className="bg-primary/10 mx-3 md:mx-4 xl:mx-8 lg:mx-4 rounded-3xl py-4 px-4 md:py-6 md:px-6 shadow-md shadow-primary/50 mt-4"
             >
               <center className="">
                 <fact.logo size={40} strokeWidth={2} className="bg-primary/50 p-1 m-1 rounded-xl " />

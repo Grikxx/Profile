@@ -76,10 +76,10 @@ const Navbar = () => {
       <DropdownMenuTrigger asChild>
         <Button
           className={cn(
-            "relative text-sm font-medium rounded-full h-10 p-1 ps-4 pe-12 group bg-primary  transition-all duration-500  ",
+            "relative text-sm font-medium rounded-full h-10 p-1 ps-4 pe-12 group bg-primary/60  transition-all duration-500  ",
             clicked
-              ? "ps-12 pe-4 w-fit overflow-hidden  bg-primary/80"
-              : "transition-all duration-500 hover:ps-12 hover:pe-4 w-fit overflow-hidden hover:bg-primary/80",
+              ? "ps-12 pe-4 w-fit overflow-hidden  bg-primary/30"
+              : "transition-all duration-500 hover:ps-12 hover:pe-4 w-fit overflow-hidden hover:bg-primary/30",
             className,
           )}
         >
