@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Layers } from "lucide-react";
+import { Layers, Flame } from "lucide-react";
 import { ModeToggle } from "./components/ui/theme";
 const lines = [
   {
@@ -165,10 +165,10 @@ const facts = [
       "Lorem-ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor ",
   },
   {
-    logo: Layers,
-    title: "Placeholder",
+    logo: Flame,
+    title: "Animes",
     description:
-      "Lorem-ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor ",
+      "I have watched 400+ animes, including big ones like One-Piece , Naruto , etc.",
   },
 ];
 
@@ -227,7 +227,9 @@ export default function Home() {
       </div>
       <div className=" bg-primary/10 mx-3 md:mx-20 rounded-3xl py-4 px-4 md:py-10 md:px-10 shadow-2xl mt-10 shadow-primary/50 ">
         <div className="md:text-3xl text-2xl md:mb-5  font-bold tracking-tight font-[Sans]">
-          <center>Quick Facts <span className="text-primary">About Me</span></center>
+          <center>
+            Quick Facts <span className="text-primary">About Me</span>
+          </center>
         </div>
         <div className="lg:flex">
           {facts.map((fact, index) => (
@@ -236,19 +238,79 @@ export default function Home() {
               className="bg-primary/10 mx-3 md:mx-4 xl:mx-8 lg:mx-4 rounded-3xl py-4 px-4 md:py-6 md:px-6 shadow-md shadow-primary/50 mt-4"
             >
               <center className="">
-                <fact.logo size={40} strokeWidth={2} className="bg-primary/50 p-1 m-1 rounded-xl " />
+                <fact.logo
+                  size={40}
+                  strokeWidth={2}
+                  className="bg-primary/50 p-1 m-1 rounded-xl "
+                />
               </center>
 
-              <center> 
+              <center>
                 <h3 className="text-lg font-semibold text-foreground font-[sans]">
-                {fact.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground font-[sans]">
-                {fact.description}
-              </p>
+                  {fact.title}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground font-[sans]">
+                  {fact.description}
+                </p>
               </center>
             </div>
           ))}
+        </div>
+      </div>
+      <div className="lg:flex lg:justify-between">
+        <div className=" bg-primary/10 mx-3 md:mx-20 lg:mr-4 rounded-3xl py-3 px-3 md:py-7 md:px-10 shadow-2xl mt-10 lg:w-4/5 shadow-primary/50 lg:h-90">
+          <div className="md:text-2xl text-lg font-bold tracking-tight font-[Sans]">
+            GitHub Contributions
+          </div>
+          <p className="text-sm md:text-1xl text-muted-foreground font-[sans] md:mb-5 ">
+            A quick look at my recent contribution activity
+          </p>
+
+          <div className="bg-primary/10 md:mx-1 xl:mx-2 lg:mx-4 rounded-3xl py-4 px-4 md:py-6 md:px-6 shadow-md shadow-primary/50 mt-4 lg:h-auto">
+            <img
+              src="https://ghchart.rshah.org/0000ff/grikxx"
+              alt="GitHub contribution heatmap for grikxx"
+              draggable="false"
+              className="w-full  dark:invert dark:hue-rotate-180 darkred:invert darkred:hue-rotate-180  darkbrown:invert darkbrown:hue-rotate-180"
+            />
+          </div>
+        </div>
+        <div className="lg:w-1/5 bg-primary/10 mx-3 md:mx-20 lg:ml-4 rounded-3xl py-4 px-4 md:py-10 md:px-10 shadow-2xl mt-10 shadow-primary/50 ">
+          <div className="md:text-2xl text-lg font-bold tracking-tight font-[Sans]">
+            My Resume
+          </div>
+          <p className="text-sm md:text-1xl text-muted-foreground font-[sans] md:mb-5 ">
+            A quick look at my resume
+          </p>
+
+          <div className="bg-primary/10  py-2 px-2 shadow-md shadow-primary/50 mt-4 relative flex flex-col rounded-xl w">
+            <div className="relative overflow-hidden text-gray-700 bg-white bg-clip-border rounded-xl h-40">
+              <img
+                src="/resume.jpg"
+                alt="card-image"
+                className="object-cover w-full h-full"
+                draggable="false"
+              />
+            </div>
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-2">
+                <p className="block font-[sans] text-base antialiased font-medium leading-relaxed text-blue-gray-900">
+                  Resume
+                </p>
+              </div>
+              <p className="block font-[sans] text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
+                Have a quick look at my resume
+              </p>
+            </div>
+            <div className="p-6 pt-0">
+              <button
+                className="align-middle select-none bg-primary font-[sans] font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+                type="button"
+              >
+                Download Resume
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
