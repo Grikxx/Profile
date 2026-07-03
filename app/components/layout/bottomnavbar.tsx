@@ -59,7 +59,7 @@ export function BottomNavBar({
         role="navigation"
         aria-label="Bottom Navigation"
         className={cn(
-          "bg-card dark:bg-card border border-border dark:border-border rounded-full flex items-center p-[5.5px] shadow-xl space-x-1 min-w-[320px] max-w-[95vw] h-[52px]",
+          "bg-card dark:bg-card border border-border/40 dark:border-border/40 rounded-full flex items-center p-[5.5px] shadow-xl space-x-1 min-w-[320px] max-w-[95vw] h-[52px]",
           stickyBottom && "fixed inset-x-0 bottom-4 mx-auto z-20 w-fit",
           show ? "block" : "hidden",
           className,

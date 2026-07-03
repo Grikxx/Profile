@@ -182,7 +182,7 @@ export default function Home() {
   }
   return (
     <div>
-      <div className=" bg-primary/10 mx-3 md:mx-20 rounded-3xl py-4 px-4 md:py-10 md:px-10 shadow-2xl shadow-primary/50 ">
+      <div className=" bg-primary/10 mx-3 md:mx-20 rounded-3xl py-3 px-4 md:py-8 md:px-10 shadow-2xl shadow-primary/50 ">
         <center>
           <img
             src="/pfp.jpg"
@@ -305,7 +305,7 @@ export default function Home() {
                   Resume
                 </p>
               </div>
-              <p className="block font-[sans] text-sm antialiased font-normal leading-normal text-gray-700 opacity-75">
+              <p className="block font-[sans] text-sm antialiased font-normal leading-normal text-muted-foreground opacity-75">
                 Have a quick look at my resume
               </p>
             </div>

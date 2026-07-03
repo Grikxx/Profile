@@ -69,7 +69,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [clicked, setClicked] = useState(false);
   const handleScroll = useCallback(() => {
-    setSticky(window.scrollY >= 50);
+    setSticky(window.scrollY >= 30);
   }, []);
 
   const handleResize = useCallback(() => {
@@ -181,9 +181,9 @@ const Navbar = () => {
         <div className="max-w-9xl mx-auto w-full px-4 py-4  ">
           <nav
             className={cn(
-              "w-full flex items-center h-fit justify-between gap-3.5 md:gap-6 transition-all duration-500",
+              "w-full flex items-center h-14 justify-between gap-3.5 md:gap-6 transition-all duration-500",
               sticky
-                ? "p-2.5 bg-background/60 backdrop-blur-md border border-border/40 shadow-2xl shadow-primary/5 rounded-full"
+                ? "p-2.5 bg-background/60  backdrop-blur-md border border-border/40 shadow-2xl shadow-primary/5 rounded-full fixed inset-x-0 top-4 mx-auto z-20 w-full"
                 : "bg-transparent border-transparent",
             )}
           >
@@ -249,7 +249,7 @@ const Navbar = () => {
                       <NavigationMenuItem key={navItem.title}>
                         <Link
                           href={navItem.href}
-                          className={`px-2 md:px-4 py-2 text-sm font-medium rounded-full transition tracking-normal outline ${
+                          className={`px-2 md:px-4 py-2.5 text-sm font-medium rounded-full transition tracking-normal outline ${
                             isActive
                               ? "text-foreground bg-background outline-border shadow-xs"
                               : "text-muted-foreground hover:text-foreground hover:bg-background outline-transparent hover:outline-border hover:shadow-xs"
