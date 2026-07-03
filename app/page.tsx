@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Layers, Flame } from "lucide-react";
-import { ModeToggle } from "./components/ui/theme";
 const lines = [
   {
     quote:
@@ -209,11 +208,10 @@ export default function Home() {
               Arch Linux (btw, I use Arch), and a severe addiction to anime.
             </p>
             <blockquote className="mt-6 border-l-4 pl-6 italic hidden xl:block mr-20 ">
-              "{lines[random].quote}"
+              "Wake up to reality! Nothing ever goes as planned in this accursed world. The longer you live, the more you will realize that the only things that truly exist in this reality are merely pain, suffering and futility"
               <br />
-              <div className="text-right ">―{lines[random].by}</div>
+              <div className="text-right ">―Masashi Kishimoto</div>
             </blockquote>
-            <ModeToggle />
           </div>
           <div>
             <img
@@ -258,21 +256,30 @@ export default function Home() {
         </div>
       </div>
       <div className="lg:flex lg:justify-between">
-        <div className=" bg-primary/10 mx-3 md:mx-20 lg:mr-4 rounded-3xl py-3 px-3 md:py-7 md:px-10 shadow-2xl mt-10 lg:w-4/5 shadow-primary/50 lg:h-90">
-          <div className="md:text-2xl text-lg font-bold tracking-tight font-[Sans]">
-            GitHub Contributions
-          </div>
-          <p className="text-sm md:text-1xl text-muted-foreground font-[sans] md:mb-5 ">
-            A quick look at my recent contribution activity
-          </p>
+        <div className=" lg:w-4/5">
+          <div className=" bg-primary/10 mx-3 md:mx-20 lg:mr-4 rounded-3xl py-3 px-3 md:py-7 md:px-10 shadow-2xl mt-10 shadow-primary/50 lg:h-90">
+            <div className="md:text-2xl text-lg font-bold tracking-tight font-[Sans]">
+              GitHub Contributions
+            </div>
+            <p className="text-sm md:text-1xl text-muted-foreground font-[sans] md:mb-5 ">
+              A quick look at my recent contribution activity
+            </p>
 
-          <div className="bg-primary/10 md:mx-1 xl:mx-2 lg:mx-4 rounded-3xl py-4 px-4 md:py-6 md:px-6 shadow-md shadow-primary/50 mt-4 lg:h-auto">
-            <img
-              src="https://ghchart.rshah.org/0000ff/grikxx"
-              alt="GitHub contribution heatmap for grikxx"
-              draggable="false"
-              className="w-full  dark:invert dark:hue-rotate-180 darkred:invert darkred:hue-rotate-180  darkbrown:invert darkbrown:hue-rotate-180"
-            />
+            <div className="bg-primary/10 md:mx-1 xl:mx-2 lg:mx-4 rounded-3xl py-4 px-4 md:py-6 md:px-6 shadow-md shadow-primary/50 mt-4 lg:h-auto">
+              <img
+                src="https://ghchart.rshah.org/0000ff/grikxx"
+                alt="GitHub contribution heatmap for grikxx"
+                draggable="false"
+                className="w-full  dark:invert dark:hue-rotate-180 darkred:invert darkred:hue-rotate-180  darkbrown:invert darkbrown:hue-rotate-180"
+              />
+            </div>
+          </div>
+          <div className=" bg-primary/10 mx-3 md:mx-20 lg:mr-4 rounded-3xl  px-5 py-4 md:py-7 md:px-10 shadow-2xl mt-10 shadow-primary/50 lg:h-auto">
+            <blockquote className=" border-l-4 pl-6 italic text-sm md:text-lg md:mr-10 ">
+              "{lines[random].quote}"
+              <br />
+              <div className="text-right ">―{lines[random].by}</div>
+            </blockquote>
           </div>
         </div>
         <div className="lg:w-1/5 bg-primary/10 mx-3 md:mx-20 lg:ml-4 rounded-3xl py-4 px-4 md:py-10 md:px-10 shadow-2xl mt-10 shadow-primary/50 ">
@@ -304,7 +311,7 @@ export default function Home() {
             </div>
             <div className="p-6 pt-0">
               <button
-                className="align-middle select-none bg-primary font-[sans] font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+                className="align-middle select-none bg-primary/50 font-[sans] font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg shadow-gray-900/10 hover:shadow-gray-900/20 focus:opacity-[0.85] active:opacity-[0.85] active:shadow-none block w-full bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
                 type="button"
               >
                 Download Resume
@@ -313,6 +320,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

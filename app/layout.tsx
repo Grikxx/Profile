@@ -41,7 +41,10 @@ export default function RootLayout({
         {children}
         <BottomNavbar />
         </ThemeProvider>
+        <footer className=" mx-3  rounded-3xl py-4 md:py-0 mt-10" />
+
       </body>
+
     </html>
   );
 }

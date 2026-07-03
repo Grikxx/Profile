@@ -6,6 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useTheme } from "next-themes";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -17,9 +18,16 @@ import { ArrowUpRight, TextAlignJustify } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { ThemeToggle } from "../ui/theme";
+import { setUncaughtExceptionCaptureCallback } from "process";
+
 export type NavigationSection = {
   title: string;
   href: string;
+};
+export type Themesection = {
+  name: string;
+  theme: string;
 };
 
 const navigationData: NavigationSection[] = [
@@ -48,7 +56,14 @@ const navigationData: NavigationSection[] = [
     href: "/contacts",
   },
 ];
-
+const themeData: Themesection[] = [
+  { name: "Blue", theme: "light" },
+  { name: "Dark Blue", theme: "dark" },
+  { name: "Red", theme: "red" },
+  { name: "Dark Red", theme: "darkred" },
+  { name: "Brown", theme: "brown" },
+  { name: "Teal", theme: "teal" },
+]
 const Navbar = () => {
   const [sticky, setSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -70,8 +85,9 @@ const Navbar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [handleScroll, handleResize]);
-
-  const MenusButton = ({ className }: { className?: string }) => (
+  const { setTheme } = useTheme();
+  const ThemeButton = ({ className }: { className?: string }) => (
+  
     <DropdownMenu open={clicked} onOpenChange={setClicked}>
       <DropdownMenuTrigger asChild>
         <Button
@@ -96,19 +112,14 @@ const Navbar = () => {
           <span
             className={cn("relative  z-10   transition-all duration-500  ")}
           >
-            Menus
+            Themes
           </span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56 mt-2">
-        {navigationData.map((item) => (
-          <DropdownMenuItem key={item.title}>
-            <Link
-              href={item.href}
-              className="w-full cursor-pointer text-sm font-medium"
-            >
-              {item.title}
-            </Link>
+        {themeData.map((item) => (
+          <DropdownMenuItem key={item.name} onClick={() => setTheme(item.theme)}>
+              {item.name}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
@@ -178,19 +189,28 @@ const Navbar = () => {
           >
             <div className=" h-fit items-center ">
               <Link href="/" className="">
-                <svg 
-                width="66.000000pt" height="45.000000pt" viewBox="0 0 600.000000 326.000000"
-                preserveAspectRatio="xMidYMid meet">
-                <g transform="translate(0.000000,326.000000) scale(0.066667,-0.066667)"
-                 stroke="none" className="fill-primary">
-                <path d="M2019 4138 c-993 -201 -1582 -2303 -763 -2718 280 -142 673 -37 862
+                <svg
+                  width="66.000000pt"
+                  height="45.000000pt"
+                  viewBox="0 0 600.000000 326.000000"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <g
+                    transform="translate(0.000000,326.000000) scale(0.066667,-0.066667)"
+                    stroke="none"
+                    className="fill-primary"
+                  >
+                    <path
+                      d="M2019 4138 c-993 -201 -1582 -2303 -763 -2718 280 -142 673 -37 862
                 231 105 149 107 132 17 -195 -123 -452 -259 -595 -588 -616 -204 -13 -256 -78
                 -156 -196 167 -199 579 -143 806 108 166 185 225 369 338 1047 26 152 64 358
                 85 457 51 239 59 352 30 392 -77 103 -623 -49 -726 -202 -100 -148 2 -225 236
                 -181 105 20 105 23 14 -138 -287 -502 -648 -555 -767 -112 -193 718 266 1787
                 799 1862 258 35 262 -374 6 -653 -117 -126 -87 -223 75 -247 258 -39 459 235
-                463 631 3 405 -292 620 -731 530z"/>
-                <path d="M4914 3836 c-41 -36 -35 -8 -242 -1238 -80 -474 -170 -688 -349 -829
+                463 631 3 405 -292 620 -731 530z"
+                    />
+                    <path
+                      d="M4914 3836 c-41 -36 -35 -8 -242 -1238 -80 -474 -170 -688 -349 -829
                 -183 -144 -182 83 4 743 107 379 95 429 -114 441 -151 8 -177 -22 -221 -260
                 -19 -99 -47 -251 -64 -338 -56 -296 -258 -630 -382 -630 -89 0 -78 92 60 523
                 160 496 141 546 -208 549 l-195 2 5 85 c11 187 -187 241 -317 88 -75 -89 -72
@@ -210,10 +230,13 @@ const Navbar = () => {
                 421 -303 38 -335 -199 -95 -706 l67 -141 -107 -129 c-314 -378 -529 -393 -722
                 -48 -68 121 -68 118 17 160 338 163 515 483 397 716 -130 254 -444 177 -672
                 -167 -30 -45 -60 -80 -65 -76 -6 4 43 271 108 595 66 330 114 603 109 623 -18
-                73 -257 96 -329 31z"/>
-                <path d="M4278 3585 c-168 -40 -233 -257 -111 -378 124 -125 363 -58 406 113
-                46 184 -97 312 -295 265z"/>
-                </g>
+                73 -257 96 -329 31z"
+                    />
+                    <path
+                      d="M4278 3585 c-168 -40 -233 -257 -111 -378 124 -125 363 -58 406 113
+                46 184 -97 312 -295 265z"
+                    />
+                  </g>
                 </svg>
               </Link>
             </div>
@@ -241,7 +264,10 @@ const Navbar = () => {
               </NavigationMenu>
             </div>
             <div>
-            <MenusButton className="hidden md:flex" />
+              <ThemeButton className="hidden md:flex" />
+              <span className="md:hidden">
+                <ThemeToggle />
+              </span>
             </div>
           </nav>
         </div>
